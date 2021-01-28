@@ -25,11 +25,11 @@
 
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
-                           <button id="mobileDecrease" class="btn btn-default"><i class="fas fa-minus"></i></button>
-                           <input type="text" class="form-control text-center" value="1" id="mobileInput" >
-                           <button id="mobileIncrease" class="btn btn-default"><i class="fas fa-plus"></i></button>
+                           <button onclick="  handleProductChange('mobile',false)" id="mobileDecrease" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <input type="text" class="form-control text-center" value="1" id="mobile-count" >
+                           <button onclick="handleProductChange('mobile',true)" id="mobileIncrease" class="btn btn-default"><i class="fas fa-plus"></i></button>
                         </div>
-                        <h5 id="mobileTotal">$1219</h5>
+                        <h5 id="mobile-total">$1219</h5>
                         <img src="images/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
@@ -43,9 +43,9 @@
                      </div>
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
-                           <button id="caseDecrease" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <button onclick="handleProductChange('case' ,false)" id="caseDecrease" class="btn btn-default"><i class="fas fa-minus"></i></button>
                            <input id="case-count" type="text" class="form-control text-center" value="1">
-                           <button id="caseIncrease" class="btn btn-default"><i class="fas fa-plus"></i></button>
+                           <button  onclick=" handleProductChange('case',true)" id="caseIncrease" class="btn btn-default"><i class="fas fa-plus"></i></button>
 
                         </div>
                         <h5 id="case-total">$59</h5>
@@ -64,7 +64,7 @@
                      </div>
 
                      <div class="col-md-4 status">
-                        <h5>$1,278</h5>
+                        <h5 id="total-price">$1,278</h5>
                         <h5>$0</h5>
                         <h5>$1,278</h5>
                      </div>
@@ -80,14 +80,60 @@
    <script>
   //increse part
   document.getElementById('caseIncrease').addEventListener('click',function(){
-       handleProductChange(true); //function calling  // true hoile pluss korbo
+       //function calling  // true hoile pluss korbo
 
      });
 
      //Decrease part
      document.getElementById('caseDecrease').addEventListener('click', function(){
-      handleProductChange(false);   //function calling //false bcz minus korbe jodi plus kori tylr(true ) likhtam
+        //function calling //false bcz minus korbe jodi plus kori tylr(true ) likhtam
    });
+
+   function handleProductChange(product, isIncrease){
+      const productInput= document.getElementById(product + '-count');  //capture input value
+        const productCount = parseInt(productInput.value);
+        //const caseNewCount = caseCount - 1;
+           let productNewCount =productCount;
+        if(isIncrease == true){
+           productNewCount = productCount+1;
+                                                    //condition diye plus minus hocche
+        }
+        if(isIncrease == false && productCount>0 ){
+           productNewCount = productCount -1;
+        }
+        productInput.value = productNewCount;
+        //const caseTotal = caseNewCount * 59;
+       let productTotal =0;
+       if(product == 'mobile'){
+          productTotal = productNewCount *1219;
+
+       } 
+       if(product == 'case'){
+          productTotal = productNewCount*59;
+       }
+        document.getElementById(product + "-total").innerText = '$' + productTotal;
+       
+ calculateTotal();
+      }
+    
+
+      
+
+
+     function calculateTotal(){
+      const mobileInput=document.getElementById("mobile-count").value;
+      const mobileCount = parseInt(mobileInput.value);
+
+      const caseInput = document.getElementById("case-count").value;
+      const caseCount = parseInt(caseInput.value);
+
+       let totalPrice = mobileCount * 1219 + caseCount * 59;
+       document.getElementById("total-price").innerText =  totalPrice;
+
+   }
+
+
+
 
 
 
@@ -108,9 +154,9 @@
    //      const caseTotal = caseNewCount * 59;
    //      document.getElementById("case-total").innerText = '$' + caseTotal;
 
-      
+     //} 
 
-     }
+     
 //      // as a medium developer you use function to set product price
 // //mobile phone
 //      function productChange(Isincrease){
@@ -129,13 +175,14 @@
 
 //      }
 //mobile phone increase part
-     document.getElementById('mobileIncrease').addEventListener('click', function(){
-      productChange(true);
+    document.getElementById('mobileIncrease').addEventListener('click', function(){
+      
+     
       
    });
    // mobilePhone decrease part
    document.getElementById('mobileDecrease').addEventListener('click',function(){
-      productChange(false);
+    
    })
 
 
