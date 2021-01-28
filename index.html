@@ -25,11 +25,11 @@
 
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
-                           <button class="btn btn-default"><i class="fas fa-minus"></i></button>
-                           <input type="text" class="form-control text-center" value="1" >
+                           <button id="mobileDecrease" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <input type="text" class="form-control text-center" value="1" id="mobileInput" >
                            <button id="mobileIncrease" class="btn btn-default"><i class="fas fa-plus"></i></button>
                         </div>
-                        <h5>$1219</h5>
+                        <h5 id="mobileTotal">$1219</h5>
                         <img src="images/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
@@ -88,25 +88,57 @@
      document.getElementById('caseDecrease').addEventListener('click', function(){
       handleProductChange(false);   //function calling //false bcz minus korbe jodi plus kori tylr(true ) likhtam
    });
-     function handleProductChange(isIncrease){
-      const caseInput= document.getElementById('case-count');  //capture input value
-        const caseCount = parseInt(caseInput.value);
-        //const caseNewCount = caseCount - 1;
-           let caseNewCount =caseCount;
-        if(isIncrease == true){
-           caseNewCount = caseCount+1;
-                                                    //condition diye plus minus hocche
-        }
-        if(isIncrease == false && caseCount>0 ){
-           caseNewCount = caseCount -1;
-        }
-        caseInput.value = caseNewCount;
-        const caseTotal = caseNewCount * 59;
-        document.getElementById("case-total").innerText = '$' + caseTotal;
+
+
+
+
+   //   function handleProductChange(isIncrease){
+   //    const caseInput= document.getElementById('case-count');  //capture input value
+   //      const caseCount = parseInt(caseInput.value);
+   //      //const caseNewCount = caseCount - 1;
+   //         let caseNewCount =caseCount;
+   //      if(isIncrease == true){
+   //         caseNewCount = caseCount+1;
+   //                                                  //condition diye plus minus hocche
+   //      }
+   //      if(isIncrease == false && caseCount>0 ){
+   //         caseNewCount = caseCount -1;
+   //      }
+   //      caseInput.value = caseNewCount;
+   //      const caseTotal = caseNewCount * 59;
+   //      document.getElementById("case-total").innerText = '$' + caseTotal;
 
       
 
      }
+//      // as a medium developer you use function to set product price
+// //mobile phone
+//      function productChange(Isincrease){
+//       const mobileInput= document.getElementById('mobileInput')
+//      const mobileCount = parseInt(mobileInput.value);
+//     // const mobileNewCount = mobileCount+1;
+//     if(Isincrease == true){
+//        mobileNewCount = mobileCount+1;
+//     }
+//     if(Isincrease == false && mobileCount > 0){
+//        mobileNewCount = mobileCount - 1;
+//     }
+//      mobileInput.value = mobileNewCount;
+//      const mobileTotal = mobileNewCount*1219;
+//      document.getElementById('mobileTotal').innerText ='$' +mobileTotal;
+
+//      }
+//mobile phone increase part
+     document.getElementById('mobileIncrease').addEventListener('click', function(){
+      productChange(true);
+      
+   });
+   // mobilePhone decrease part
+   document.getElementById('mobileDecrease').addEventListener('click',function(){
+      productChange(false);
+   })
+
+
      
 
 
@@ -140,7 +172,29 @@
    //   })
 
 
-  
+   // for mobile phone first part
+   //increament part
+
+   // document.getElementById('mobileIncrease').addEventListener('click', function(){
+   //   const mobileInput= document.getElementById('mobileInput')
+   //   const mobileCount = parseInt(mobileInput.value);
+   //   const mobileNewCount = mobileCount+1;
+   //   mobileInput.value = mobileNewCount;
+   //   const mobileTotal = mobileNewCount*1219;
+   //   document.getElementById('mobileTotal').innerText ='$' +mobileTotal;
+      
+   // });
+   // // mobilePhone decrease part
+   // document.getElementById('mobileDecrease').addEventListener('click',function(){
+   //    const mobileInput = document.getElementById('mobileInput');
+   //    const mobileCount = parseInt(mobileInput.value);
+   //    const mobileNewCount = mobileCount -1;
+   //    mobileInput.value = mobileNewCount;
+   //    const mobileTotal = mobileNewCount * 1219;
+   //    document.getElementById('mobileTotal').innerText = '$'+mobileTotal;
+   // })
+
+
 
    </script>
 
