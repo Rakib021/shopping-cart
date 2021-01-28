@@ -26,8 +26,8 @@
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
                            <button class="btn btn-default"><i class="fas fa-minus"></i></button>
-                           <input type="text" class="form-control text-center" value="1">
-                           <button class="btn btn-default"><i class="fas fa-plus"></i></button>
+                           <input type="text" class="form-control text-center" value="1" >
+                           <button id="mobileIncrease" class="btn btn-default"><i class="fas fa-plus"></i></button>
                         </div>
                         <h5>$1219</h5>
                         <img src="images/remove.png" alt="" class="remove-item">
@@ -43,12 +43,12 @@
                      </div>
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
-                           <button class="btn btn-default"><i class="fas fa-minus"></i></button>
-                           <input type="text" class="form-control text-center" value="1">
-                           <button class="btn btn-default"><i class="fas fa-plus"></i></button>
+                           <button id="caseDecrease" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <input id="case-count" type="text" class="form-control text-center" value="1">
+                           <button id="caseIncrease" class="btn btn-default"><i class="fas fa-plus"></i></button>
 
                         </div>
-                        <h5>$59</h5>
+                        <h5 id="case-total">$59</h5>
                         <img src="images/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
@@ -77,6 +77,73 @@
          </div>
       </div>
    </section>
+   <script>
+  //increse part
+  document.getElementById('caseIncrease').addEventListener('click',function(){
+       handleProductChange(true); //function calling  // true hoile pluss korbo
+
+     });
+
+     //Decrease part
+     document.getElementById('caseDecrease').addEventListener('click', function(){
+      handleProductChange(false);   //function calling //false bcz minus korbe jodi plus kori tylr(true ) likhtam
+   });
+     function handleProductChange(isIncrease){
+      const caseInput= document.getElementById('case-count');  //capture input value
+        const caseCount = parseInt(caseInput.value);
+        //const caseNewCount = caseCount - 1;
+           let caseNewCount =caseCount;
+        if(isIncrease == true){
+           caseNewCount = caseCount+1;
+                                                    //condition diye plus minus hocche
+        }
+        if(isIncrease == false && caseCount>0 ){
+           caseNewCount = caseCount -1;
+        }
+        caseInput.value = caseNewCount;
+        const caseTotal = caseNewCount * 59;
+        document.getElementById("case-total").innerText = '$' + caseTotal;
+
+      
+
+     }
+     
+
+
+
+
+
+
+
+//as a new developer you should follow this path
+
+
+   //    //increse part
+   //   document.getElementById('caseIncrease').addEventListener('click',function(){
+   //      const caseInput= document.getElementById('case-count');  //capture input value
+   //      const caseCount = parseInt(caseInput.value);
+   //      const caseNewCount = caseCount +1;
+   //      caseInput.value = caseNewCount;
+   //      const caseTotal = caseNewCount * 59;
+   //      document.getElementById("case-total").innerText = '$' + caseTotal;
+
+   //   });
+
+   //   //Decrease part
+   //   document.getElementById('caseDecrease').addEventListener('click', function(){
+   //      const caseInput = document.getElementById('case-count'); //capture input value
+   //      const caseCount = parseInt(caseInput.value);
+   //      const caseNewCount =caseCount - 1;
+   //      caseInput.value = caseNewCount;
+   //      const caseTotal = caseNewCount *59;
+   //      document.getElementById("case-total").innerText = '$' +caseTotal;
+   //   })
+
+
+  
+
+   </script>
+
 </body>
 
 </html>
